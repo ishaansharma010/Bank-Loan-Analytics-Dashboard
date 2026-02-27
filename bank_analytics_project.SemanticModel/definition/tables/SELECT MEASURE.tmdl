@@ -1,0 +1,49 @@
+table 'SELECT MEASURE'
+	lineageTag: 16c40bbd-ceaa-439c-8e3e-1f502968b93b
+
+	column 'SELECT MEASURE'
+		lineageTag: 8bc03dc2-37b0-426b-8044-ae571aff1469
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'SELECT MEASURE Order'
+
+		relatedColumnDetails
+			groupByColumn: 'SELECT MEASURE Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SELECT MEASURE Fields'
+		isHidden
+		lineageTag: 34432790-1040-4704-9bfc-cea28dbe864f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'SELECT MEASURE Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SELECT MEASURE Order'
+		isHidden
+		formatString: 0
+		lineageTag: e2131dc2-f655-4879-84d8-b61da3ae9a92
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SELECT MEASURE' = calculated
+		mode: import
+		source =
+				{
+				    ("TOTAL AMOUNT RECEIVED", NAMEOF('financial_loan'[TOTAL AMOUNT RECEIVED]), 0),
+				    ("TOTAL FUNDED AMOUNT", NAMEOF('financial_loan'[TOTAL FUNDED AMOUNT]), 1),
+				    ("TOTAL LOAN APPLICATIONS", NAMEOF('financial_loan'[TOTAL LOAN APPLICATIONS]), 2)
+				}
+
+	annotation PBI_Id = db3fa2144b78436faccc6d2489770ca3
+
