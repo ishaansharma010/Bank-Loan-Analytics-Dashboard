@@ -1,1 +1,1 @@
-# power-bi-project
+Bank Loan Analytics Dashboard — Power BI# power-bi-project
